@@ -97,14 +97,17 @@ const capitalize = (str) => {
 const formatRandomSentence = () => {
     const words = getWords();
     vowels = ["a", "e", "i", "o"];
+
     if (vowels.includes(words.adjective[0]) && words.article1 === "a") {
         words.article1 = "an";
     }
-    if (vowels.includes(words.adjective[0]) && words.article2 === "a") {
+    if (vowels.includes(words.directObject[0]) && words.article2 === "a") {
         words.article2 = "an";
     }
-    console.log(words);
+
     return capitalize(`${words.article1} ${words.adjective} ${words.subject} ${words.adverb} ${words.verb} ${words.article2} ${words.directObject}.`);
 }
 
-console.log(formatRandomSentence());
+const setRandomSentence = () => {
+    document.getElementById("sentence").innerHTML = formatRandomSentence();
+}
