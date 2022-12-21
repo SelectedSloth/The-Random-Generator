@@ -71,5 +71,3 @@ const directObjects = [
 ];
 
 const getRandomWord = (arr) => {return arr[Math.floor(Math.random() * arr.length)]};
-
-console.log(getRandomWord(directObjects));
