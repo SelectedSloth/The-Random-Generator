@@ -109,5 +109,7 @@ const formatRandomSentence = () => {
 }
 
 const setRandomSentence = () => {
-    document.getElementById("sentence").innerHTML = formatRandomSentence();
+    const randomSentence = formatRandomSentence();
+    document.getElementById("sentence").innerHTML = randomSentence;
+    console.log(randomSentence);
 }
