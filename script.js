@@ -22,7 +22,7 @@ const adjectives = [
     "red",
     "boring",
     "exciting",
-    "useless",
+    "abnormal",
     "useful",
     "evasive",
     "persistent"
@@ -36,7 +36,7 @@ const verbs = [
     "walked on",
     "passed by",
     "stared at",
-    "joined",
+    "caught",
     "destroyed",
     "scared",
     "dragged"
@@ -47,9 +47,9 @@ const adverbs = [
     "nearly",
     "proudly",
     "triumphantly",
-    "happily",
+    "merrily",
     "hurriedly",
-    "profoundly",
+    "placidly",
     "ignorantly",
     "quietly",
     "carefully",
@@ -61,7 +61,7 @@ const directObjects = [
     "rock",
     "rabbit",
     "porcupine",
-    "KitKat",
+    "candy",
     "raccoon",
     "can",
     "twig",
@@ -70,4 +70,41 @@ const directObjects = [
     "package"
 ];
 
-const getRandomWord = (arr) => {return arr[Math.floor(Math.random() * arr.length)]};
+// Articles - another type of adjective
+const articles = ["a", "the"];
+
+const getRandomWord = (arr) => {
+    return arr[Math.floor(Math.random() * arr.length)]
+};
+
+// Return all of the words to be used in a sentence as an object
+const getWords = () => {
+    return {
+        subject: getRandomWord(subjects),
+        adjective: getRandomWord(adjectives),
+        verb: getRandomWord(verbs),
+        adverb: getRandomWord(adverbs),
+        directObject: getRandomWord(directObjects),
+        article1: getRandomWord(articles),
+        article2: getRandomWord(articles)
+    };
+};
+
+const capitalize = (str) => {
+    return str[0].toUpperCase() + str.slice(1);
+}
+
+const formatRandomSentence = () => {
+    const words = getWords();
+    vowels = ["a", "e", "i", "o"];
+    if (vowels.includes(words.adjective[0]) && words.article1 === "a") {
+        words.article1 = "an";
+    }
+    if (vowels.includes(words.adjective[0]) && words.article2 === "a") {
+        words.article2 = "an";
+    }
+    console.log(words);
+    return capitalize(`${words.article1} ${words.adjective} ${words.subject} ${words.adverb} ${words.verb} ${words.article2} ${words.directObject}.`);
+}
+
+console.log(formatRandomSentence());
