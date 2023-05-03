@@ -6,40 +6,29 @@ const subjects = [
     "dog", 
     "chicken", 
     "hare", 
-    "eagle", 
-    "bobcat", 
     "roadrunner",
-    "coyote",
     "tortoise",
-    "rattle snake"
+    "sheep",
+    "dog", 
+    "rabbit",
+    "mouse"
 ];
 
 // Adjectives - used to modify the subject
 const adjectives = [
-    "gray",
-    "brown",
-    "blue",
-    "red",
-    "boring",
-    "exciting",
-    "abnormal",
-    "useful",
-    "evasive",
-    "persistent"
+    "unfriendly",
+    "amazing",
+    "legendary",
+    "moody", 
+    "unicornly",
+    "underappreciated"
 ];
 
 // Verbs - when the subject does something
 const verbs = [
-    "devoured",
-    "threw",
-    "bit",
-    "walked on",
-    "passed by",
-    "stared at",
-    "caught",
-    "destroyed",
-    "scared",
-    "dragged"
+    "befriends", 
+    "helps", 
+    "fights"
 ];
 
 // Adverbs - modifies the verb
@@ -58,16 +47,12 @@ const adverbs = [
 
 // Direct Objects - what the subject does something to
 const directObjects = [
-    "rock",
-    "rabbit",
-    "porcupine",
-    "candy",
-    "raccoon",
-    "can",
-    "twig",
-    "branch",
-    "shoe",
-    "package"
+    "cat",
+    "rattle snake", 
+    "coyote", 
+    "bobcat", 
+    "eagle", 
+    "dragon"
 ];
 
 // Articles - another type of adjective
@@ -77,7 +62,7 @@ const getRandomWord = (arr) => {
     return arr[Math.floor(Math.random() * arr.length)]
 };
 
-// Return all of the words to be used in a sentence as an object
+// Return all of the words to be used in a topic as an object
 const getWords = () => {
     return {
         subject: getRandomWord(subjects),
@@ -94,22 +79,40 @@ const capitalize = (str) => {
     return str[0].toUpperCase() + str.slice(1);
 }
 
-const formatRandomSentence = () => {
+const formatRandomTopic = () => {
     const words = getWords();
-    vowels = ["a", "e", "i", "o"];
+    vowels = ["a", "e", "i", "o", "u"];
 
-    if (vowels.includes(words.adjective[0]) && words.article1 === "a") {
+    console.log(words.adjective.slice(0, 3));
+
+    if (words.article1 === "a" && (vowels.includes(words.adjective[0]) && (words.adjective.slice(0, 3) !== 'uni'))) {
         words.article1 = "an";
     }
-    if (vowels.includes(words.directObject[0]) && words.article2 === "a") {
+    if (words.article2 === "a" && (vowels.includes(words.directObject[0]) && (words.directObject.slice(0, 3) !== 'uni'))) {
         words.article2 = "an";
     }
 
-    return capitalize(`${words.article1} ${words.adjective} ${words.subject} ${words.adverb} ${words.verb} ${words.article2} ${words.directObject}.`);
+    return capitalize(`${words.article1} ${words.adjective} ${words.subject} ${words.verb} ${words.article2} ${words.directObject}.`);
 }
 
-const setRandomSentence = () => {
-    const randomSentence = formatRandomSentence();
-    document.getElementById("sentence").innerHTML = randomSentence;
-    console.log(randomSentence);
+const setRandomTopic = () => {
+    const randomTopic = formatRandomTopic();
+    document.getElementById("random-topic").innerHTML = randomTopic;
+    console.log(randomTopic);
 }
+
+const toggleColorTheme = () => {
+    if (document.body.classList.contains('dark')) {
+        document.body.classList.remove('dark');
+    } else {
+        document.body.classList.add('dark');
+    }
+}
+
+const handleToggleColorClick = (e) => {
+    toggleColorTheme();
+}
+
+document.querySelector('main').onmouseup = setRandomTopic;
+document.onkeyup = e => { if (e.code === "Space") setRandomTopic()};
+document.getElementById('color-theme-button').onmouseup = handleToggleColorClick;

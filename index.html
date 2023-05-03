@@ -7,19 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
-    <title>Random Sentence Generator</title>
+    <title>Random Fable Generator</title>
 </head>
-<body onclick="setRandomSentence()">
-    <div class="grid">
-        <div class="container four-rem">
-            <h1>Random Sentence Generator</h1>
+<body class="dark">
+    <main>
+        <div class="grid">
+            <div class="container four-rem">
+                <h1>Random Fable Generator</h1>
+            </div>
+            <div class="container">
+                <p id="random-topic">Click to generate a random fable.</p>
+            </div>
+            <div class="container four-rem">
+                <h2 id="instructions">Click anywhere to generate a new random fable.</h2>
+            </div>
         </div>
-        <div class="container">
-            <p id="sentence">Click to generate a random sentence.</p>
-        </div>
-        <div class="container four-rem">
-            <h2 id="instructions">Click anywhere to generate a new random sentence.</h2>
-        </div>
+    </main>
+    <div id="menu">
+        <!-- <div class="button" id="randomize">Randomize</div> -->
+        <div class="button" id="color-theme-button">Toggle Dark</div>
     </div>
     <script src="script.js"></script>
 </body>
