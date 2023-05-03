@@ -13,6 +13,17 @@
     color: white;
 }
 
+.inaccessible {
+    background-color:darkgreen;
+}
+
+.inaccessible h1,
+.inaccessible h2,
+.inaccessible p
+{
+    color:darkred;
+}
+
 body {
     height: 100vh;
     min-height: 30rem;
@@ -33,6 +44,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .four-rem {
@@ -44,12 +56,21 @@ h1 {
     font-size: 3rem;
 }
 
+.inaccessible #random-topic {
+    color: purple;
+}
+
 .dark {
     color: white;
 }
 
 body.dark {
     background-color: black;
+}
+
+#randomize {
+    background-color: red;
+    color:white;
 }
 
 #menu {
@@ -63,22 +84,24 @@ body.dark {
 }
 
 .button {
-
     background-color: black;
     color:white;
     cursor: pointer;
     font-size: 0.8rem;
-
     width: 7rem;
-    padding: 0.4rem;
+    padding: 0.4rem 1rem;
     border-radius: 0.125rem;
 }
 
-/* #color-theme-button {
-
-} */
+#color-theme-button {
+    width: fit-content;
+}
 
 .dark .button {
     background-color: white;
     color:black;
+}
+
+.instruction {
+    width:100vw;
 }

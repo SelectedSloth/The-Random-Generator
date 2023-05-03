@@ -19,8 +19,7 @@ const adjectives = [
     "unfriendly",
     "amazing",
     "legendary",
-    "moody", 
-    "unicornly",
+    "moody",
     "underappreciated"
 ];
 
@@ -102,17 +101,55 @@ const setRandomTopic = () => {
 }
 
 const toggleColorTheme = () => {
-    if (document.body.classList.contains('dark')) {
+    if (document.body.classList.contains('dark') || document.body.classList.contains('inaccessible')) {
         document.body.classList.remove('dark');
+        document.body.classList.remove('inaccessible');
+    // } else if (document.body.classList.contains('inaccessible')) {
+    //     document.body.classList.remove('inaccessible');
+    //     // document.body.classList.add('dark');
     } else {
         document.body.classList.add('dark');
     }
+}
+
+const setColorThemeInaccessible = () => {
+    document.body.classList = ['inaccessible'];
 }
 
 const handleToggleColorClick = (e) => {
     toggleColorTheme();
 }
 
+const doSomethingRandom = () => {
+    const choice = Math.ceil(Math.random() * 4);
+    console.log(choice);
+    switch (choice) {
+        case 1:
+            setColorThemeInaccessible();
+            break;
+        case 2:
+            toggleColorTheme();
+            break;
+        case 3:
+            setRandomTopic();
+            break;
+        case 4:
+            startRandomSound();
+            break;
+    }
+}
+
+const startRandomSound = () => {
+    const basePath = './sounds/';
+    const number = Math.ceil(Math.random() * 6);
+    const path = `${basePath}${number}.mp3`;
+    const audio = new Audio(path);
+    audio.play();
+    console.log(audio);
+    return audio;
+}
+
 document.querySelector('main').onmouseup = setRandomTopic;
 document.onkeyup = e => { if (e.code === "Space") setRandomTopic()};
 document.getElementById('color-theme-button').onmouseup = handleToggleColorClick;
+document.getElementById('randomize').onmouseup = doSomethingRandom;
