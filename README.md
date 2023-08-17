@@ -1,4 +1,4 @@
-# Random Sentence Generator
+# Random Fable Generator
 This program uses Javascript to create a random sentence.
 
 ## Usage
